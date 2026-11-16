@@ -1,0 +1,201 @@
+:root{
+  --topbar:#022b3a;
+  --accent:#00a8e8;
+  --heading:#022b3a;
+  --text:#555;
+  --bg:#ededed;
+  --card:#f8f8f8;
+  --white:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Open Sans",Arial,sans-serif;background:var(--bg);color:var(--text);font-size:13px}
+a{text-decoration:none;color:var(--accent)}
+ul{list-style:none}
+.container{width:min(940px,92%);margin:0 auto}
+
+/* top bar */
+.topbar{background:var(--topbar);height:27px;line-height:27px;font-size:11px;font-weight:700}
+.topbar .container{text-align:right}
+.topbar span{color:#fff;margin:0 3px}
+
+/* header */
+.header{background:var(--white);height:132px}
+.header-inner{position:relative;height:100%;display:flex;align-items:center}
+.logo{display:flex;align-items:center;gap:20px;margin-top:-10px}
+.logo-text{font-size:20px;color:var(--accent);font-weight:300;letter-spacing:.3px}
+.logo-text b{font-weight:300}
+.btn{display:inline-block;background:var(--accent);color:#fff;font-size:15px;padding:10px 16px;transition:background .2s}
+.btn:hover{background:#0090c8}
+.btn-signup{position:absolute;right:0;bottom:0;min-width:105px;padding:0 14px;height:33px;line-height:33px;display:flex;justify-content:space-between;align-items:center}
+.btn-signup i{font-style:normal;font-size:20px;margin-left:12px}
+
+/* nav */
+.nav{background:#f7f7f7;height:52px}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;height:100%;position:relative}
+.nav ul#navLinks{display:flex;gap:36px}
+.nav a{color:#222;font-size:14px;padding:6px 0}
+.nav a:hover,.nav a.active{color:var(--accent)}
+.menu-toggle{display:none;background:none;border:0;font-size:24px;cursor:pointer}
+
+/* language */
+.lang{position:relative}
+.lang button{background:#fff;border:0;box-shadow:0 1px 2px rgba(0,0,0,.15);padding:6px 10px;cursor:pointer;font-size:12px;color:#444}
+#langMenu{display:none;position:absolute;right:0;top:100%;background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.2);z-index:5;min-width:110px}
+#langMenu.open{display:block}
+#langMenu li{padding:8px 12px;cursor:pointer;font-size:12px}
+#langMenu li:hover{background:#f0f0f0}
+
+/* products */
+.main{padding:20px 0 60px}
+.section-title{font-size:25px;font-weight:400;color:var(--heading);margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{position:relative;background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.12);padding:8px 8px 14px;transition:transform .2s}
+.card:hover{transform:translateY(-3px)}
+.card h3{text-align:center;font-size:12px;font-weight:400;margin:8px 0 22px}
+.medal{position:absolute;left:0;top:-1px;width:26px;height:30px;background:var(--accent);color:#fff;font-weight:700;font-size:12px;text-align:center;padding-top:7px;clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%)}
+.thumb{margin:0 auto 22px;width:162px;background:#2f2f2f;border:1px solid #ccc;overflow:hidden}
+.win-bar{height:12px;background:#e9e9e9;display:flex;justify-content:flex-end;gap:3px;padding:3px}
+.win-bar i{width:7px;height:6px;background:#aaa;display:block}
+.win-body{padding:8px 6px 8px;background:#444}
+.win-title{font-size:18px;font-weight:800;text-align:center;letter-spacing:1px;margin:6px 0 14px;text-shadow:0 0 6px currentColor}
+.win-select{height:9px;background:#ddd;margin-bottom:5px}
+.win-btn{background:#333;border:1px solid #666;color:#ddd;font-size:6px;text-align:center;padding:4px 0;margin-bottom:4px}
+.win-btn.dim{color:#777}
+.meta{padding:0 3px;line-height:24px;font-size:11px}
+.meta b{font-weight:700}
+.card .btn{position:absolute;right:8px;bottom:8px;font-size:11px;font-weight:700;padding:0 12px;height:28px;line-height:28px}
+.card{padding-bottom:50px}
+
+/* responsive */
+@media(max-width:800px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .grid{grid-template-columns:1fr}
+  .logo-text{font-size:15px}
+  .header{height:110px}
+  .menu-toggle{display:block}
+  .nav ul#navLinks{display:none;position:absolute;left:0;top:52px;background:#f7f7f7;flex-direction:column;gap:0;width:100%;z-index:4;box-shadow:0 4px 8px rgba(0,0,0,.1)}
+  .nav ul#navLinks.open{display:flex}
+  .nav ul#navLinks li a{display:block;padding:12px 16px}
+}
+
+/* CSS-only language dropdown (no JS) */
+.lang:focus-within #langMenu{display:block}
+#langMenu a{display:block;color:#333;padding:8px 12px;font-size:12px}
+#langMenu a:hover{background:#f0f0f0}
+/* CSS-only mobile menu (no JS) */
+#menu-check{display:none}
+.menu-toggle{cursor:pointer}
+@media(max-width:560px){
+  #menu-check:checked ~ ul#navLinks{display:flex}
+}
+
+/* ===== Full-width 3 column cards (33.33% each) ===== */
+.main .container{width:100%;max-width:none;padding:0 24px}
+.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.card{width:100%;padding-bottom:56px}
+.card h3{font-size:14px}
+.thumb{width:220px}
+.win-title{font-size:24px}
+.win-btn{font-size:8px;padding:5px 0}
+.meta{font-size:12px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.main .container{padding:0 14px}}
+
+/* ===== Animations (CSS only) ===== */
+/* 1. page load: cards rise in one after another */
+@keyframes cardIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.card{opacity:0;animation:cardIn .6s cubic-bezier(.2,.7,.2,1) forwards}
+.card:nth-child(1){animation-delay:.10s}
+.card:nth-child(2){animation-delay:.22s}
+.card:nth-child(3){animation-delay:.34s}
+.card:nth-child(4){animation-delay:.46s}
+.card:nth-child(5){animation-delay:.58s}
+.card:nth-child(6){animation-delay:.70s}
+
+/* 2. hover: lift + blue glow + thumbnail zoom */
+.card{transition:transform .3s ease,box-shadow .3s ease}
+.card:hover{transform:translateY(-6px);box-shadow:0 14px 28px rgba(0,168,232,.25)}
+.thumb{transition:transform .35s ease,box-shadow .35s ease}
+.card:hover .thumb{transform:scale(1.06);box-shadow:0 6px 16px rgba(0,0,0,.35)}
+
+/* 3. medal swings on hover */
+.medal{transform-origin:top center}
+.card:hover .medal{animation:swing .7s ease}
+@keyframes swing{20%{transform:rotate(12deg)}40%{transform:rotate(-9deg)}60%{transform:rotate(5deg)}80%{transform:rotate(-3deg)}100%{transform:rotate(0)}}
+
+/* 4. buttons: shine sweep */
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg)}
+.btn:hover::after{left:130%;transition:left .6s ease}
+
+/* 5. nav links: underline grows from left */
+.nav ul#navLinks a{position:relative}
+.nav ul#navLinks a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--accent);transition:width .3s ease}
+.nav ul#navLinks a:hover::after,.nav ul#navLinks a.active::after{width:100%}
+
+/* 6. logo + title */
+@keyframes slideIn{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+.logo{animation:slideIn .8s ease both}
+.logo svg{transition:transform .4s ease}
+.logo:hover svg{transform:rotate(-8deg) scale(1.1)}
+.section-title{animation:slideIn .7s .05s ease both}
+
+/* 7. language menu fade */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.lang:focus-within #langMenu{animation:fadeDown .2s ease}
+
+/* accessibility: turn off motion if user prefers */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .card{opacity:1}
+}
+
+/* ===== Page loader (CSS only, auto hides) ===== */
+:root{--ld:1.9s}
+#loader{
+  position:fixed;inset:0;z-index:9999;background:var(--topbar);
+  display:flex;align-items:center;justify-content:center;
+  animation:loaderOut .6s ease var(--ld) forwards;
+}
+@keyframes loaderOut{to{opacity:0;visibility:hidden;transform:scale(1.05)}}
+.loader-box{text-align:center;color:#fff}
+.loader-logo{fill:var(--accent);animation:logoPulse 1.2s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(0,168,232,.6))}
+@keyframes logoPulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.14);opacity:1}}
+.loader-text{margin-top:14px;font-size:20px;font-weight:300;letter-spacing:1px;color:#fff}
+.loader-text b{font-weight:300;color:var(--accent)}
+.loader-bar{width:200px;height:4px;background:rgba(255,255,255,.15);border-radius:4px;margin:22px auto 14px;overflow:hidden}
+.loader-bar span{display:block;height:100%;width:0;background:var(--accent);border-radius:4px;animation:barFill calc(var(--ld) - .2s) ease-in-out forwards}
+@keyframes barFill{0%{width:0}60%{width:70%}100%{width:100%}}
+.loader-dots i{display:inline-block;width:7px;height:7px;margin:0 3px;border-radius:50%;background:var(--accent);animation:dotBounce .9s ease-in-out infinite}
+.loader-dots i:nth-child(2){animation-delay:.15s}
+.loader-dots i:nth-child(3){animation-delay:.3s}
+@keyframes dotBounce{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-7px);opacity:1}}
+
+/* page content starts animating after loader finishes */
+.card:nth-child(1){animation-delay:calc(var(--ld) + .10s)}
+.card:nth-child(2){animation-delay:calc(var(--ld) + .22s)}
+.card:nth-child(3){animation-delay:calc(var(--ld) + .34s)}
+.card:nth-child(4){animation-delay:calc(var(--ld) + .46s)}
+.card:nth-child(5){animation-delay:calc(var(--ld) + .58s)}
+.card:nth-child(6){animation-delay:calc(var(--ld) + .70s)}
+.logo{animation-delay:var(--ld)}
+.section-title{animation-delay:calc(var(--ld) + .05s)}
+
+@media (prefers-reduced-motion:reduce){
+  #loader{display:none}
+}
+
+
+/* ===== NextGenUpdate logo overrides ===== */
+.logo{margin-top:-10px}
+.logo img{display:block;height:50px;width:auto;max-width:100%}
+.logo:hover img{transform:scale(1.03)}
+.logo img{transition:transform .3s ease}
+@media(max-width:560px){.logo img{height:38px}}
+
+/* loader on white (uses dark logo) */
+#loader{background:#fff}
+.loader-logo{width:300px;max-width:80vw;height:auto;fill:none;filter:none;animation:logoPulse 1s ease-in-out infinite}
+.loader-bar{background:rgba(2,43,58,.12)}
